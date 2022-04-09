@@ -1,0 +1,65 @@
+INSTRUCTIONS FOR HOW TO SET UP THE MONTHLY TRIGGER
+
+Once a month trigger for events/scripts/etc.
+
+Made by Gunnar Von Pontius for Minutes to Midnight
+
+###################################################
+
+The "effect" is achieved by using decisions that has effects in it, triggering the monthly effect script.
+
+First of all; set up the following command as a on_startup in the 00_on_actions file.
+
+####
+on_startup = {
+	effect = {
+		set_variable = { amount_of_pulses_passed = 0 }
+		XXX = {
+			set_country_flag = pulse_january
+		}
+	}
+}
+####
+
+The "XXX" country tag here is used for whatever the least used/dummy nation you have is.
+As no one in MtM ever plays Malaya it has the MAL tag.
+This sets the flag necessary for "XXX" to start the chaining decisions needed for the pulses.
+
+After this is complete, add the decisions file to your decisions folder, and the following into your decisions_categories file.
+
+####
+pulse_actions = {
+	icon = generic_propaganda
+
+	visible = {
+
+	}
+}
+####
+
+When this is complete; add the MtM_pulse_effects file into the scripted_effects folder.
+The code looks like this:
+
+####
+first_every_month_script = {
+	add_to_variable = { amount_of_pulses_passed = 1 }
+	USA = {
+		US_current_desegregation_level_monthly_change_script = yes
+	}
+}
+####
+
+In MtM this triggers a monthly script for the us (kept as an example, remove for yours. This is where you add in the effects you want.
+
+Keep the "add_to_variable = { amount_of_pulses_passed = 1 }" since with the var_list command you can check how often the effect has been triggered.
+Make sure that you make each thing country specific, as otherwise it will run on your XXX nation.
+
+Lastly, replace the MAL tag the pulse_decisions file with whatever TAG you have choosen.
+
+Now it is complete, and if you have done the above it will work.
+
+
+
+
+
+

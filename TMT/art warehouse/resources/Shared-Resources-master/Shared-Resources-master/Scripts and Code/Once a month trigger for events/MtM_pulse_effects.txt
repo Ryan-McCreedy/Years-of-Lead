@@ -1,0 +1,6 @@
+first_every_month_script = {
+	add_to_variable = { amount_of_pulses_passed = 1 }
+	USA = {
+		US_current_desegregation_level_monthly_change_script = yes
+	}
+}
